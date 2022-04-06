@@ -4,14 +4,16 @@ namespace graphcustomcountries.api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ProjectPathController : ControllerBase
+    public class CountryController : ControllerBase
     {
-        const string URL_PROJECT = "https://github.com/riquesons5/GraphCustomCountries";
+        public CountryController()
+        {
+        }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(URL_PROJECT);
+            return Ok();
         }
     }
 }
