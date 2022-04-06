@@ -1,19 +1,23 @@
-import * as C from './App.style';
-import { CardCountrie } from './components/CardCountrie';
+import { Container, Area, Title } from './App.style';
+import CardCountrie from './components/CardCountrie';
 import { SearchArea } from './components/SearchArea';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   return (
-    <C.Container>
-      <C.Area>
-        <C.Title>Countries</C.Title>
-        
-        <SearchArea />
+    <Provider store={store}>
+      <Container>
+        <Area>
+          <Title>Countries</Title>
+          
+          <SearchArea />
 
-        <CardCountrie />
+          <CardCountrie />
 
-      </C.Area>
-    </C.Container>
+        </Area>
+      </Container>
+    </Provider>
   );
 }
 
