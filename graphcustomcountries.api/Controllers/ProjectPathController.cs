@@ -8,6 +8,11 @@ namespace graphcustomcountries.api.Controllers
     {
         const string URL_PROJECT = "https://github.com/riquesons5/GraphCustomCountries";
 
+        // GET api/projectpath
+        /// <summary>
+        /// Retorna o link do projeto no GitHub com o código fonte
+        /// </summary>
+        /// <returns>Recuperar url do projeto</returns>
         [HttpGet]
         public IActionResult Get()
         {
