@@ -30,6 +30,16 @@ namespace graphcustomcountries.api
 
             services.AddScoped<ICountryRepository, CountryRepository>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "Tretas",
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin();
+                    }
+                );
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c => 
             {
@@ -60,6 +70,8 @@ namespace graphcustomcountries.api
             }
 
             app.UseSwagger();
+
+            app.UseCors("Tretas");
 
             app.UseSwaggerUI(c =>
             {

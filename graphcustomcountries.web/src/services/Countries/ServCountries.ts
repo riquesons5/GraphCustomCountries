@@ -1,29 +1,37 @@
 import {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    useQuery,
-    gql
-  } from "@apollo/client";
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
 
-  const client = new ApolloClient({
-    uri: 'https://countries-274616.ew.r.appspot.com',
-    cache: new InMemoryCache()
+const client = new ApolloClient({
+  uri: 'https://countries-274616.ew.r.appspot.com',
+  cache: new InMemoryCache()
+});
+
+export const getCountries = async () => {
+  // const countries = await client
+  //     .query({
+  //     query: gql`
+  //         query {
+  //             Country {
+  //                 _id
+  //                 name
+  //                 capital
+  //             }
+  //         }
+  //     `
+  //     });
+
+  const _request = await fetch('http://localhost:63120/country', {
+    method: 'GET',
+    headers: new Headers(),
+    mode: 'cors',
   });
 
-  export const getCountries = async () => {
-    const countries = await client
-        .query({
-        query: gql`
-            query {
-                Country {
-                    _id
-                    name
-                    capital
-                }
-            }
-        `
-        });
-    
-        return countries;
-  } 
+  
+  const _response = await _request.json();
+  return _response;
+} 

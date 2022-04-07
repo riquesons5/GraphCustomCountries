@@ -30,10 +30,10 @@ const CardCountrie = (props:any) => {
         <Container>
             {   
                 countries.map((country:any) => (
-                    <Card key={country.Id.toString()}>
+                    <Card key={country.id.toString()}>
                         <Image src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg/@@images/image" />
                         <Title>{country.name}</Title>
-                        <Section>Capital: <b>{country.Capital}</b></Section>
+                        <Section>Capital: <b>{country.capital}</b></Section>
                         <Button>Ver detalhes</Button>
                     </Card>
                 ))
