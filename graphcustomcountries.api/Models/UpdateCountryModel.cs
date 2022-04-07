@@ -4,7 +4,7 @@
     {
         public string Capital { get; set; }
         public decimal Area { get; set; }
-        public decimal Population { get; set; }
-        public decimal DemographicDensity { get; set; }
+        public int Population { get; set; }
+        public decimal PopulationDensity { get; set; }
     }
 }

@@ -1,5 +1,8 @@
-﻿using graphcustomcountries.api.Models;
+﻿using graphcustomcountries.api.Data.Repositories;
+using graphcustomcountries.api.Entities;
+using graphcustomcountries.api.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace graphcustomcountries.api.Controllers
 {
@@ -7,32 +10,87 @@ namespace graphcustomcountries.api.Controllers
     [ApiController]
     public class CountryController : ControllerBase
     {
-        public CountryController()
+        private readonly ICountryRepository _repCountry;
+        public CountryController(ICountryRepository repCountry)
         {
+            _repCountry = repCountry;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok();
+            try
+            {
+                var countries = _repCountry.GetAll();
+                return Ok(countries);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok();
+            try
+            {
+                var countries = _repCountry.GetById(id);
+
+                if (countries == null)
+                    return NotFound();
+
+                return Ok(countries);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
         public IActionResult Post(AddCountryModel model)
         {
-            return Ok();
+            try
+            {
+                var country = new Country(
+                    model.Name,
+                    model.Capital,
+                    model.Area,
+                    model.Population,
+                    model.PopulationDensity
+                );
+
+                _repCountry.Add(country);
+
+                return CreatedAtAction("GetById", new { Id = country.Id } ,country);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, UpdateCountryModel model)
         {
-            return NoContent();
+            try
+            {
+                var country = _repCountry.GetById(id);
+
+                if (country == null)
+                    return NotFound();
+
+                country.Update(model.Capital, model.Area, model.Population, model.PopulationDensity);
+
+                _repCountry.Update(country);
+
+                return NoContent();
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
