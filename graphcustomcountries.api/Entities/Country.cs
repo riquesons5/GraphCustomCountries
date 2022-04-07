@@ -4,13 +4,13 @@ namespace graphcustomcountries.api.Entities
 {
     public class Country
     {
-        public Country(string name, string capital, decimal area, decimal population, decimal demographicDensity)
+        public Country(string name, string capital, decimal area, int population, decimal populationDensity)
         {
             Name = name;
             Capital = capital;
             Area = area;
             Population = population;
-            DemographicDensity = demographicDensity;
+            PopulationDensity = populationDensity;
 
             CreatedAt = DateTime.Now;
             UpdatedAt = DateTime.Now;
@@ -20,17 +20,17 @@ namespace graphcustomcountries.api.Entities
         public string Name { get; private set; }
         public string Capital { get; private set; }
         public decimal Area { get; private set; }
-        public decimal Population { get; private set; }
-        public decimal DemographicDensity { get; private set; }
+        public int Population { get; private set; }
+        public decimal PopulationDensity { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
 
-        public void Update(string capital, decimal area, decimal population, decimal demographicDensity)
+        public void Update(string capital, decimal area, int population, decimal populationDensity)
         {
             Capital = capital;
             Area = area;
             Population = population;
-            DemographicDensity = demographicDensity;
+            PopulationDensity = populationDensity;
 
             UpdatedAt = DateTime.Now;
         }
