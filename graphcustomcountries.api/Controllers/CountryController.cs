@@ -58,7 +58,8 @@ namespace graphcustomcountries.api.Controllers
                     model.Capital,
                     model.Area,
                     model.Population,
-                    model.PopulationDensity
+                    model.PopulationDensity,
+                    model.UrlFlagImage
                 );
 
                 _repCountry.Add(country);
@@ -81,7 +82,13 @@ namespace graphcustomcountries.api.Controllers
                 if (country == null)
                     return NotFound();
 
-                country.Update(model.Capital, model.Area, model.Population, model.PopulationDensity);
+                country.Update(
+                    model.Capital, 
+                    model.Area, 
+                    model.Population, 
+                    model.PopulationDensity, 
+                    model.UrlFlagImage
+                );
 
                 _repCountry.Update(country);
 

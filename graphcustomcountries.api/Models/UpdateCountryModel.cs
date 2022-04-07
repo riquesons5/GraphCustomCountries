@@ -6,5 +6,6 @@
         public decimal Area { get; set; }
         public int Population { get; set; }
         public decimal PopulationDensity { get; set; }
+        public string UrlFlagImage { get; set; }
     }
 }
