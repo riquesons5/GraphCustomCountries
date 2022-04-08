@@ -10,6 +10,7 @@ export const Container = styled.div`
     .image {
         margin-right: 5px;
     }
+    
     input {
         border: 0px;
         background: transparent;

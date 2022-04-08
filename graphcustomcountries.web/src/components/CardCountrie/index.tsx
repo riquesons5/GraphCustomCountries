@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-
 import { Container, Card, Image, Title, Section, Button } from './styles';
 import { connect } from 'react-redux';
 import { removeAllCountries, addAllCountries } from '../../store/reducers/Countries/CountriesActions';
+import { Link } from 'react-router-dom';
 
 function mapStateToProps(state:any) {
     return {
@@ -21,20 +21,24 @@ const CardCountrie = (props:any) => {
     const {countries = []} = props;
 
     useEffect(() => {
-        props.addAllCountries();
+        props.removeAllCountries();
     }, []);
 
-    console.log(countries);
+    useEffect(() => {
+        props.addAllCountries();
+    }, []);
 
     return (
         <Container>
             {   
                 countries.map((country:any) => (
                     <Card key={country.id.toString()}>
-                        <Image src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg/@@images/image" />
+                        <Image src={country.urlFlagImage} />
                         <Title>{country.name}</Title>
                         <Section>Capital: <b>{country.capital}</b></Section>
-                        <Button>Ver detalhes</Button>
+                        <Link to={`/detailCard/${country.id}`} >
+                            <Button>Ver detalhes</Button>
+                        </Link>
                     </Card>
                 ))
             }            

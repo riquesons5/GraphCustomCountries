@@ -1,23 +1,16 @@
-import { Container, Area, Title } from './App.style';
-import CardCountrie from './components/CardCountrie';
-import { SearchArea } from './components/SearchArea';
-import { Provider } from 'react-redux';
-import store from './store';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import { Home } from "./pages/Home";
+import { Details } from "./pages/Details";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Container>
-        <Area>
-          <Title>Countries</Title>
-          
-          <SearchArea />
-
-          <CardCountrie />
-
-        </Area>
-      </Container>
-    </Provider>
+    <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/detailCard/:id" component={Details} />
+        </Switch>
+    </BrowserRouter>
   );
 }
 
