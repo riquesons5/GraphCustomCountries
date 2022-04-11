@@ -4,7 +4,7 @@ export const Header = () => {
     return (
         <C.Header>
             <div className="container">
-                <h1>Countries</h1>
+                <h1>Países</h1>
             </div>
         </C.Header>
     );

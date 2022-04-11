@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CountryPage = styled.main`
+export const CountryUpdate = styled.main`
     height: calc(100vh - 90px);
 
     .container {
