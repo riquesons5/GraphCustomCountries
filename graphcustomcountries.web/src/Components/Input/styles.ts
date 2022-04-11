@@ -4,7 +4,7 @@ export const InputArea = styled.section`
     width: 1024px;
     margin: 20px auto;
     border: 1px solid #555;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 10px;
     align-items: center;
     display: flex;
