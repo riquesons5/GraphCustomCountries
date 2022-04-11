@@ -1,16 +1,12 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
-import { Home } from "./pages/Home";
-import { Details } from "./pages/Details";
+import { MainRoutes } from "./Routes/MainRoutes";
+import { Header } from "./Components/Header";
 
 function App() {
   return (
-    <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/detailCard/:id" component={Details} />
-        </Switch>
-    </BrowserRouter>
+    <>
+      <Header />
+      <MainRoutes />
+    </>
   );
 }
 

@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const InputArea = styled.section`
+    width: 1024px;
+    margin: 20px auto;
     border: 1px solid #555;
     border-radius: 15px;
     padding: 10px;
-    margin: 20px 0;
-    display: flex;
     align-items: center;
-    .image {
+    display: flex;
+
+    .icon--img {
         margin-right: 5px;
     }
-    
+
     input {
         border: 0px;
         background: transparent;
