@@ -37,6 +37,8 @@ export const CountryForm = ({
                         <span>URL bandeira:</span>
                         <input type="text" value={urlFlagImage} />
                     </div>
+
+                    <button>Alterar dados</button>
                 </form>
             </div >
             {/* {id}, {name}, {capital}, {population}, {populationDensity}, {area}, {urlFlagImage} */}
