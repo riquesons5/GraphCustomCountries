@@ -28,19 +28,11 @@ namespace graphcustomcountries.api
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite("DataSource=app.db;Cache=Shared"));
 
+            services.AddCors();
+            services.AddControllers();
+
             services.AddScoped<ICountryRepository, CountryRepository>();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: "Tretas",
-                    policy =>
-                    {
-                        policy.AllowAnyOrigin();
-                    }
-                );
-            });
-
-            services.AddControllers();
             services.AddSwaggerGen(c => 
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -71,8 +63,6 @@ namespace graphcustomcountries.api
 
             app.UseSwagger();
 
-            app.UseCors("Tretas");
-
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint($"v1/swagger.json", $"v1");
@@ -80,6 +70,12 @@ namespace graphcustomcountries.api
 
             app.UseRouting();
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

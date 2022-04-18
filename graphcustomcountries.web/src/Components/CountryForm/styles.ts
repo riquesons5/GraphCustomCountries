@@ -12,7 +12,7 @@ export const FormData = styled.div`
         flex-direction: column;
         width: 400px;
 
-        span {
+        label {
             width: 100%;
             font-size: 16px;
             font-weight: 500;
@@ -31,6 +31,12 @@ export const FormData = styled.div`
             height: 50px;
             width: 100%;
         }
+
+        input[type="text"]:disabled {
+            background: #666;
+        }
+
+        
     }
 
     button {

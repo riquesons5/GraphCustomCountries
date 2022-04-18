@@ -1,11 +1,13 @@
 ﻿using graphcustomcountries.api.Data.Repositories;
 using graphcustomcountries.api.Entities;
 using graphcustomcountries.api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace graphcustomcountries.api.Controllers
 {
+    //[Authorize]
     [Route("[controller]")]
     [ApiController]
     public class CountryController : ControllerBase
