@@ -1,4 +1,5 @@
 import React from "react";
+import { api } from "../../api";
 import { CountryTS } from "../../types/Country";
 import * as C from "./styles";
 
@@ -15,12 +16,25 @@ export const CountryForm = ({
 
     function handleSubmit(event:any) {
         event.preventDefault();
-        console.log("valor do nome: " + _name);
-        console.log("valor da capital: " + _capital);
-        console.log("valor da populacao: " + _population);
-        console.log("valor da densidade demografica: " + _populationdensity);
-        console.log("valor da area: " + _area);
-        console.log("valor da bandeira: " + _urlflagimage);
+
+        const dto: CountryTS = {
+            id: id,
+            name: _name,
+            capital: _capital,
+            area: _area,
+            population: _populationdensity,
+            populationDensity: _populationdensity,
+            urlFlagImage: _urlflagimage
+        };
+
+        const updateCountry = async (id: number, param: CountryTS) => {
+            let response = await api.updateCountry(id, param);
+            console.log(response);
+        };
+
+        updateCountry(id, dto);
+
+        debugger;
     }
 
     return (
