@@ -55,6 +55,10 @@ namespace graphcustomcountries.api.Controllers
         {
             try
             {
+                var record = _repCountry.GetByName(model.Name);
+                if(record != null)
+                    throw new Exception("Já existe um país com o mesmo nome cadastrado.");
+                    
                 var country = new Country(
                     model.Name,
                     model.Capital,

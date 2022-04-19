@@ -29,6 +29,11 @@ namespace graphcustomcountries.api.Data.Repositories
             return _context.Countries.SingleOrDefault(c => c.Id == id);
         }
 
+        Country ICountryRepository.GetByName(string name)
+        {
+            return _context.Countries.SingleOrDefault(c => c.Name.ToUpper() == name.ToUpper());
+        }
+
         void ICountryRepository.Update(Country jobVacancy)
         {
             _context.Countries.Update(jobVacancy);
