@@ -2,10 +2,12 @@ import React from "react";
 import { api } from "../../api";
 import { CountryTS } from "../../types/Country";
 import * as C from "./styles";
+import { useNavigate } from 'react-router-dom';
 
 export const CountryForm = ({
     id, name, capital, population, populationDensity, area, urlFlagImage
 }: CountryTS) => {
+    const navigate = useNavigate();
 
     const [_name, setName] = React.useState(name);
     const [_capital, setCapital] = React.useState(capital);
@@ -17,24 +19,31 @@ export const CountryForm = ({
     function handleSubmit(event:any) {
         event.preventDefault();
 
+        if(!_name || !_capital || !_population || !_populationdensity || !_area || !_urlflagimage)
+            return alert(`Preencha todos os campos corretamente antes de submeter as alterações.`);
+
         const dto: CountryTS = {
             id: id,
             name: _name,
             capital: _capital,
             area: _area,
-            population: _populationdensity,
+            population: _population,
             populationDensity: _populationdensity,
             urlFlagImage: _urlflagimage
         };
 
         const updateCountry = async (id: number, param: CountryTS) => {
-            let response = await api.updateCountry(id, param);
-            console.log(response);
+            await api.updateCountry(id, param);
         };
 
-        updateCountry(id, dto);
-
-        debugger;
+        try {
+            updateCountry(id, dto);
+            alert(`Dados alterados com sucesso.`);
+            navigate(`/country/${id}`);
+        }catch(error) {
+            alert(`Erro ao tentar alterar dados do país.\nErro: ${error}`);
+        }
+        
     }
 
     return (
