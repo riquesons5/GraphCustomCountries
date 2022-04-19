@@ -26,7 +26,7 @@ export const Countries = () => {
             <Input />
             <div className='countries'>
                 {loading &&
-                    <div className=''>Loading...</div>
+                    <div className=''>Carregando...</div>
                 }
                 {!loading &&
                     countries.map((item) => (
