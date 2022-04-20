@@ -23,5 +23,5 @@ Após rodar o backend, vamos iniciar a aplicação do Frontend.
 
 </hr>
 
-##### Mais informações nos diretórios do Backend e Frontend </br>
+##### Mais informações sobre a aplicação nos diretórios do Backend e Frontend </br>
 ##### É preciso ter o node.js instalado e o SDK do .NET Core 3.1
