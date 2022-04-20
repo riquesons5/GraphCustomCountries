@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace graphcustomcountries.api.Entities
 {
@@ -14,6 +15,8 @@ namespace graphcustomcountries.api.Entities
             UrlFlagImage = urlFlagImage;
             CreatedAt = DateTime.Now;
             UpdatedAt = DateTime.Now;
+
+            JsonData = SerializeData(this);
         }
 
         public int Id { get; private set; }
@@ -23,6 +26,7 @@ namespace graphcustomcountries.api.Entities
         public int Population { get; private set; }
         public decimal PopulationDensity { get; private set; }
         public string UrlFlagImage { get; private set; }
+        public string JsonData { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
 
@@ -34,6 +38,13 @@ namespace graphcustomcountries.api.Entities
             PopulationDensity = populationDensity;
             UrlFlagImage = urlFlagImage;
             UpdatedAt = DateTime.Now;
+
+            JsonData = SerializeData(this);
+        }
+
+        private string SerializeData(Country country)
+        {
+            return JsonConvert.SerializeObject(country);
         }
     }
 }
