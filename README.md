@@ -8,7 +8,7 @@ O Backend deve ser executado primeiro.
     > `dotnet build` </br>
     > `dotnet run`
 * Pronto, o backend está rodando e pode ser acessado em `http://localhost:5000`
-    > `http://localhost:5000/swagger/` -> Para acessar a documentação
+    > `http://localhost:5000/swagger/` -> Para acessar a documentação </br>
     > `http://localhost:5000/ProjectPath` -> Retorna a url do projeto no GitHub
 
 </hr>
@@ -21,3 +21,7 @@ Após rodar o backend, vamos iniciar a aplicação do Frontend.
     > `npm start`
 * Pronto, o frontend pode ser acessado em `http://localhost:3000`
 
+</br>
+</hr>
+<small>Mais informações nos diretórios do Backend e Frontend </small> </br>
+<small>É preciso ter o node.js instalado e o SDK do .NET Core 3.1</small>
