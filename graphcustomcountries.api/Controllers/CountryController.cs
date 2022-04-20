@@ -18,6 +18,11 @@ namespace graphcustomcountries.api.Controllers
             _repCountry = repCountry;
         }
 
+        // GET api/Country
+        /// <summary>
+        /// Recupera todos os países da base de dados
+        /// </summary>
+        /// <returns>Lista de países</returns>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -32,6 +37,12 @@ namespace graphcustomcountries.api.Controllers
             }
         }
 
+        // GET api/Country/{id}
+        /// <summary>
+        /// Recupera apenas um país através do identificador
+        /// </summary>
+        /// <param name="id">Identificador do país</param>
+        /// <returns>País</returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -50,6 +61,23 @@ namespace graphcustomcountries.api.Controllers
             }
         }
 
+        // POST api/Country
+        /// <summary>
+        /// Cadastra um novo país
+        /// </summary>
+        /// <remarks>
+        ///{
+        ///"name": "nome do país",
+        ///"capital": "capital do país",
+        ///"area": "area em km²",
+        ///"population": "quantidade estimada da população",
+        ///"populationdensity": "densidade demográfica do país"
+        ///"urlflagimage": "url contendo a imagem com a bandeira do país"
+        ///}
+        /// </remarks>
+        /// <returns>Objeto recém-criado</returns>
+        /// <response code="201">Sucesso</response>
+        /// <response code="400">Dados inválidos</response>
         [HttpPost]
         public IActionResult Post(AddCountryModel model)
         {
@@ -78,6 +106,24 @@ namespace graphcustomcountries.api.Controllers
             }
         }
 
+        // PUT api/Country/{id}
+        /// <summary>
+        /// Atualiza um país de acordo com o identificador
+        /// </summary>
+        /// <remarks>
+        ///{
+        ///"capital": "capital do país",
+        ///"area": "area em km²",
+        ///"population": "quantidade estimada da população",
+        ///"populationdensity": "densidade demográfica do país"
+        ///"urlflagimage": "url contendo a imagem com a bandeira do país"
+        ///}
+        /// </remarks>
+        /// <param name="id">Identificador do país</param>
+        /// <param name="model">Dados do país</param>
+        /// <returns>Sem conteúdo.</returns>
+        /// <response code="204">Sem conteúdo</response>
+        /// <response code="404">Não encontrado</response>
         [HttpPut("{id}")]
         public IActionResult Put(int id, UpdateCountryModel model)
         {
