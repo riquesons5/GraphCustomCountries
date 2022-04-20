@@ -4,10 +4,16 @@ import { Input } from '../../Components/Input';
 import { CountryTS } from '../../types/Country';
 import { CountryItem } from '../../Components/CountryItem';
 import { api } from '../../api';
+import Pagination from './pagination';
+
+const LIMIT = 8;
 
 export const Countries = () => {
     const [countries, setCountries] = useState<CountryTS[]>([]);
     const [loading, setLoading] = useState(false);
+    const [search, setSearch] = useState('');
+    const [offset, setOffset] = useState(0);
+
 
     useEffect(() => {
         getAllCountries()
@@ -17,19 +23,28 @@ export const Countries = () => {
         setLoading(true);
         let countries = await api.getCountries();
         setCountries(countries);
-        console.log(countries);
         setLoading(false);
     };
 
+    const lowerSearch = search.toLowerCase();
+
+    const filteredCountries = countries.filter(country => country
+        .name.toLowerCase().includes(lowerSearch));
+
+    const pagCountries = filteredCountries.slice(offset, offset + 8);
+
     return (
         <C.CountriesArea>
-            <Input />
+            <Input
+                value={search}
+                search={setSearch}
+            />
             <div className='countries'>
                 {loading &&
                     <div className=''>Carregando...</div>
                 }
                 {!loading &&
-                    countries.map((item) => (
+                    pagCountries.map((item) => (
                         <CountryItem
                             id={item.id}
                             name={item.name}
@@ -43,6 +58,12 @@ export const Countries = () => {
 
                 }
             </div>
+            <Pagination
+                limit={LIMIT}
+                total={filteredCountries.length}
+                offset={offset}
+                setOffset={setOffset}
+            />
         </ C.CountriesArea>
     )
 }
